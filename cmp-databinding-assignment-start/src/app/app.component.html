@@ -16,4 +16,12 @@
   </div>
 </div>
 
-<app-game-control></app-game-control>
+<app-game-control
+    (oddCreated)="onOddAdded($event)"
+    (evenCreated)="onEvenAdded($event)"></app-game-control>
+
+<div *ngFor="let number of numbers">
+  
+  <app-odd *ngIf="number.type == 'Odd'">{{number.type}} - {{number.number}}</app-odd>  
+  <app-even *ngIf="number.type == 'Even'">{{number.type}} - {{number.number}}</app-even>  
+</div>
