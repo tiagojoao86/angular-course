@@ -1,0 +1,39 @@
+** Atualizar um repositorio **
+1) Criar new Branch
+	git checkout -b nome_branch
+
+2) Adicionar arquivos alterados ao Branch
+	git add nome_dos_arquivos
+
+3) Ver o status
+	git status
+
+4) Comitar os arquivos
+	git commit -m "mensagem"
+
+5) Ver diferenças entre os branches
+	git diff master
+
+6) Alternar para o Master
+	git checkout master
+
+7) Fazer o merge com o Master
+	git merge nome_do_brach_criado
+
+8) Enviar para o GITHUB
+	git push origin master
+
+** Criar um repositorio **
+
+1) Git init
+
+2) git remote add origin git@github.com:tiagojoao86/project-angular.git
+
+2) git fetch origin master
+Empurrar forçando
+3) git push origin master --force-with-lease
+
+** Baixar forçando **
+git fetch --all
+
+git reset --hard origin/master
