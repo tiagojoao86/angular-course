@@ -14,23 +14,15 @@
       </ol>
     </div>
   </div>
-</div>
-<hr/>
-<app-game-control
-    (oddCreated)="onOddAdded($event)"
-    (evenCreated)="onEvenAdded($event)"></app-game-control>
-<hr/>
-<div *ngFor="let number of numbers" class="container">
   <div class="row">
-    <app-odd *ngIf="number.type == 'Odd'">    
-      <div class="col-xs-2 odd">
-        <h4>{{number.type}} - {{number.number}} </h4>
-      </div>    
-    </app-odd>  
-    <app-even *ngIf="number.type == 'Even'">
-            <div class="col-xs-2 even">
-              <h4>{{number.type}} - {{number.number}} </h4>
-            </div>
-    </app-even>
-  </div>  
+    <div class="col-xs-12">
+      <app-game-control (intervalFired)="onIntervalFired($event)"></app-game-control>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"></app-odd>
+      <app-even *ngFor="let evenNumber of evenNumbers" [number]="evenNumber"></app-even>
+    </div>
+  </div>
 </div>

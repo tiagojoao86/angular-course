@@ -11,12 +11,10 @@ export class AppComponent {
   numbers = [];
 
   onOddAdded(number:{number: number}){
-    console.log('Odd: '+ number.number);
     this.numbers.push({type: 'Odd', number: number.number});
   }
 
   onEvenAdded(number:{number: number}){
-    console.log('Even: '+ number.number);
     this.numbers.push({type: 'Even', number: number.number});
   }
 
