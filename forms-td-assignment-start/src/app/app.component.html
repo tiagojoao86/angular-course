@@ -37,7 +37,8 @@
         <div class="form-group">
           <select id="type" class="form-control"
             [ngModel]="defaultQuestion"
-            name="type">
+            name="type"
+            #type="ngModel">
             <option *ngFor="let option of options">
               {{ option.name }}
             </option>
@@ -60,7 +61,19 @@
             *ngIf="!f.valid && f.touched">
               <h3>This form is invalid.</h3>
         </span>
+        <button class="btn btn-primary" type="submit"
+          [disabled]="!f.valid">Submit</button>
       </form>
     </div>
   </div>
 </div>
+<hr>
+<div class="row" *ngIf="submitted">
+  <div class="col-xs-12">
+      <h3>Your Data</h3>      
+      <p>Mail: {{ user.email }}</p>
+      <p>Password: {{ user.password }}</p>
+      <p>Type: {{ user.type }}</p>
+  </div>
+</div>
+
