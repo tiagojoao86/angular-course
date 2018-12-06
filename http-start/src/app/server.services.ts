@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { Http, Headers, Response } from "@angular/http";
+import 'rxjs/Rx';
+import { Observable } from "rxjs/Rx";
 
 @Injectable()
 export class ServerService {
@@ -11,6 +13,40 @@ export class ServerService {
     }
 
     storeServer(servers: any[]){
-        return this.http.post(this.url+'data.json', servers);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        // return this.http.post(
+        //     this.url+'data.json', 
+        //     servers, 
+        //     {headers: headers}
+        // );
+        return this.http.put(
+            this.url+'data.json', 
+            servers, 
+            {headers: headers}
+        );
+    }
+
+    getServers() {
+        return this.http.get(
+            this.url+'data'
+        ).map(
+            (response: Response) => {
+                const data = response.json();                
+                return data;
+            }
+        ).catch(
+            (error: Response) => {                
+                return Observable.throw('Someting went wrong');
+            }
+        );
+    }
+
+    getAppName(){
+        return this.http.get('https://angular-http-d1f99.firebaseio.com/appName.json')
+            .map(
+                (response: Response) => {
+                    return response.json();
+                }
+            );
     }
 }
