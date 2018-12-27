@@ -11,7 +11,7 @@ export class AppComponent {
 
   appName = this.serverService.getAppName();
 
-  constructor(private serverService: ServerService){}
+  constructor(private serverService: ServerService) {}
 
   servers = [
     {
@@ -36,7 +36,7 @@ export class AppComponent {
     return Math.round(Math.random() * 10000);
   }
 
-  onSave(){
+  onSave() {
     this.serverService.storeServer(this.servers)
       .subscribe(
         (response) => console.log(response),
@@ -44,11 +44,11 @@ export class AppComponent {
     );
   }
 
-  onGet(){
+  onGet() {
     this.serverService.getServers()
       .subscribe(
         (servers: any[]) => {
-          this.servers = servers
+          this.servers = servers;
         },
         (error) => console.log(error)
     );
